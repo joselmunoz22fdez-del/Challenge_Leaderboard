@@ -13,6 +13,21 @@ def load_data_csv(file_path: str | Path, sep: str = ',', decimal: str = '.', enc
         return pd.DataFrame()
 
 
+def save_data_csv(df: pd.DataFrame,file_path: str | Path,sep: str = ',',decimal: str = '.',encoding: str = 'utf-8',index: bool = False) -> bool:
+    try:
+        df.to_csv(file_path, sep=sep, decimal=decimal, encoding=encoding,index=index)
+        return True
+
+    except Exception as e:
+        print(f"Error al guardar el archivo CSV: {e}")
+        return False
+
+
+    except Exception as e:
+        print(f"Error al guardar el archivo CSV: {e}")
+        return False
+
+
 def load_json(file_path: str | Path) -> dict | list:
     """Carga un archivo JSON y devuelve su contenido."""
     import json
